@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  rr-catering:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rr-catering-app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_SITE_URL=http://localhost:3000
+    restart: unless-stopped
+    networks:
+      - rr-catering-network
+
+networks:
+  rr-catering-network:
+    driver: bridge
