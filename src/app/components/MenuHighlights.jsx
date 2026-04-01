@@ -28,7 +28,7 @@ export default function MenuHighlights() {
         </div>
 
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {['all', 'veg', 'non-veg', 'desserts'].map((category) => (
+          {['all', 'veg', 'non-veg', 'desserts', 'breakfast'].map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
@@ -38,7 +38,10 @@ export default function MenuHighlights() {
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
-              {category === 'all' ? 'All' : category === 'veg' ? 'Vegetarian' : category === 'non-veg' ? 'Non-Vegetarian' : 'Desserts'}
+              {category === 'all' ? 'All' : 
+               category === 'veg' ? 'Vegetarian' : 
+               category === 'non-veg' ? 'Non-Vegetarian' : 
+               category === 'desserts' ? 'Desserts' : 'Breakfast'}
             </button>
           ))}
         </div>
@@ -55,6 +58,7 @@ export default function MenuHighlights() {
                 <span className={`inline-block px-3 py-1 rounded-full text-sm ${
                   item.category === 'veg' ? 'bg-green-100 text-green-800' :
                   item.category === 'non-veg' ? 'bg-red-100 text-red-800' :
+                  item.category === 'breakfast' ? 'bg-orange-100 text-orange-800' :
                   'bg-yellow-100 text-yellow-800'
                 }`}>
                   {item.tag}
