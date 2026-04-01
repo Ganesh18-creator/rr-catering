@@ -3,15 +3,95 @@
 import { useState } from 'react'
 
 const menuData = [
-  { name: 'Paneer Tikka', category: 'veg', price: '₹350/kg', description: 'Marinated cottage cheese grilled to perfection' },
-  { name: 'Butter Chicken', category: 'non-veg', price: '₹450/kg', description: 'Tender chicken in rich tomato cream sauce' },
-  { name: 'Dal Makhani', category: 'veg', price: '₹250/kg', description: 'Creamy black lentils slow-cooked overnight' },
-  { name: 'Gulab Jamun', category: 'desserts', price: '₹30/piece', description: 'Soft milk dumplings in rose-flavored syrup' },
-  { name: 'Biryani', category: 'non-veg', price: '₹400/kg', description: 'Aromatic basmati rice with spiced meat' },
-  { name: 'Malai Kofta', category: 'veg', price: '₹320/kg', description: 'Cottage cheese dumplings in creamy gravy' },
-  { name: 'Tandoori Chicken', category: 'non-veg', price: '₹500/kg', description: 'Clay oven roasted marinated chicken' },
-  { name: 'Rasmalai', category: 'desserts', price: '₹40/piece', description: 'Soft cheese patties in sweetened milk' },
-  { name: 'Chole Bhature', category: 'veg', price: '₹280/kg', description: 'Spiced chickpeas with fried bread' },
+  // Menu 1 - Basic
+  { name: 'Poli', category: 'veg', menu: 'menu-1', description: 'Traditional sweet flatbread' },
+  { name: 'Masala Vada', category: 'veg', menu: 'menu-1', description: 'Crispy lentil fritters' },
+  { name: 'Vegetable Pulav', category: 'veg', menu: 'menu-1', description: 'Aromatic rice with mixed vegetables' },
+  { name: 'Onion Raitha', category: 'veg', menu: 'menu-1', description: 'Yogurt with onions and spices' },
+  { name: 'Nooni Vankaya', category: 'veg', menu: 'menu-1', description: 'Stuffed eggplant curry' },
+  
+  // Breakfast Items
+  { name: 'Kesari', category: 'breakfast', menu: 'breakfast', description: 'Sweet semolina dessert' },
+  { name: 'Idly', category: 'breakfast', menu: 'breakfast', description: 'Steamed rice cakes' },
+  { name: 'Uddi Vada', category: 'breakfast', menu: 'breakfast', description: 'Crispy lentil donuts' },
+  { name: 'Pongal', category: 'breakfast', menu: 'breakfast', description: 'Rice and lentil comfort food' },
+  
+  // Menu 2 - Reception Dinner
+  { name: 'Jamoon', category: 'desserts', menu: 'menu-2', description: 'Sweet syrup-soaked dumplings' },
+  { name: 'Mirapakaya Bajji', category: 'veg', menu: 'menu-2', description: 'Spicy chili fritters' },
+  { name: 'Gongura Rice', category: 'veg', menu: 'menu-2', description: 'Tangy sorrel leaves rice' },
+  { name: 'Vegetable Biryani', category: 'veg', menu: 'menu-2', description: 'Aromatic basmati rice with vegetables' },
+  { name: 'Perugu Pacchadi', category: 'veg', menu: 'menu-2', description: 'Yogurt-based side dish' },
+  
+  // Menu 3 - Premium
+  { name: 'Bellam Jalebi', category: 'desserts', menu: 'menu-3', description: 'Jaggery-based sweet spirals' },
+  { name: 'Kaju Biryani', category: 'veg', menu: 'menu-3', description: 'Cashew-rich aromatic rice' },
+  { name: 'Corn Samosa', category: 'veg', menu: 'menu-3', description: 'Crispy corn-filled pastries' },
+  { name: 'Bendi Pakoda', category: 'veg', menu: 'menu-3', description: 'Crispy okra fritters' },
+  { name: 'Ice Cream', category: 'desserts', menu: 'menu-3', description: 'Assorted flavors' },
+  
+  // Veg Menu - Afternoon Lunch
+  { name: 'Poornalu', category: 'veg', menu: 'veg-lunch', description: 'Sweet lentil-stuffed pastries' },
+  { name: 'Mango Chitrannam', category: 'veg', menu: 'veg-lunch', description: 'Tangy mango rice' },
+  { name: 'Menthaku Pappu', category: 'veg', menu: 'veg-lunch', description: 'Fenugreek lentil curry' },
+  { name: 'Aloo Fry', category: 'veg', menu: 'veg-lunch', description: 'Spiced potato fry' },
+  
+  // Evening Snacks
+  { name: 'Mirchi Bajji', category: 'veg', menu: 'evening', description: 'Spicy chili fritters' },
+  { name: 'Mysore Bonda', category: 'veg', menu: 'evening', description: 'Crispy lentil balls' },
+  
+  // Chats
+  { name: 'Bangarapet Chats', category: 'veg', menu: 'chats', description: 'Popular street food style chats' },
+  { name: 'Delhi Chats', category: 'veg', menu: 'chats', description: 'North Indian style chats' },
+  
+  // Welcome Drinks
+  { name: 'Mocktail Counter', category: 'beverages', menu: 'drinks', description: '4 varieties of refreshing mocktails' },
+  { name: 'Fresh Fruit Juice', category: 'beverages', menu: 'drinks', description: '2 varieties of fresh juices' },
+  { name: 'Hot Tawa Badam Milk', category: 'beverages', menu: 'drinks', description: 'Traditional almond milk' },
+  { name: 'Milkshake', category: 'beverages', menu: 'drinks', description: '2 varieties of thick shakes' },
+  
+  // Reception Dinner Sweets
+  { name: 'Mango Rasamalai', category: 'desserts', menu: 'reception-sweets', description: 'Mango-flavored cheese dessert' },
+  { name: 'Blueberry Kaju Kathali', category: 'desserts', menu: 'reception-sweets', description: 'Blueberry cashew fudge' },
+  { name: 'Kakinada Kaja', category: 'desserts', menu: 'reception-sweets', description: 'Layered sweet pastry' },
+  
+  // Hot Starters
+  { name: 'Alasanda Vada', category: 'veg', menu: 'starters', description: 'Black-eyed pea fritters' },
+  { name: 'Stuffed Capsicum Bajji', category: 'veg', menu: 'starters', description: 'Stuffed bell pepper fritters' },
+  { name: 'Hazwan Pakoda', category: 'veg', menu: 'starters', description: 'Special mixed vegetable fritters' },
+  
+  // Rotis
+  { name: 'Butter Naan', category: 'veg', menu: 'rotis', description: 'Soft butter-topped flatbread' },
+  { name: 'Rumali Roti', category: 'veg', menu: 'rotis', description: 'Thin handkerchief bread' },
+  { name: 'Methi Chapathi', category: 'veg', menu: 'rotis', description: 'Fenugreek-flavored flatbread' },
+  { name: 'Paneer Hyderabadi Gravy', category: 'veg', menu: 'rotis', description: 'Rich cottage cheese curry' },
+  { name: 'Phool Makani Gravy', category: 'veg', menu: 'rotis', description: 'Creamy vegetable curry' },
+  
+  // Dosas
+  { name: 'Kadapa Karam Ghee Dosa', category: 'veg', menu: 'dosas', description: 'Spicy ghee-roasted dosa' },
+  { name: 'Palli Chutney', category: 'veg', menu: 'dosas', description: 'Peanut chutney' },
+  
+  // Premium Rice Items
+  { name: 'Veg Avakaya Biryani', category: 'veg', menu: 'premium-rice', description: 'Pickle-flavored vegetable biryani' },
+  { name: 'Veg Rajugari Biryani', category: 'veg', menu: 'premium-rice', description: 'Royal style vegetable biryani' },
+  { name: 'Gutti Vankaya', category: 'veg', menu: 'premium-rice', description: 'Stuffed baby eggplant curry' },
+  { name: 'Avakaya Mudda Pappu', category: 'veg', menu: 'premium-rice', description: 'Pickle-flavored thick lentils' },
+  { name: 'Andhra Ulavacharu', category: 'veg', menu: 'premium-rice', description: 'Horse gram soup with cream' },
+  
+  // Non-Veg Items
+  { name: 'Chicken Raja', category: 'non-veg', menu: 'non-veg', description: 'Boneless chicken starter' },
+  { name: 'Chicken Double Dum', category: 'non-veg', menu: 'non-veg', description: 'Slow-cooked chicken delicacy' },
+  { name: 'KFC Chicken Stick', category: 'non-veg', menu: 'non-veg', description: 'Crispy chicken strips' },
+  { name: 'Apollo Fish Fry', category: 'non-veg', menu: 'non-veg', description: 'Boneless spicy fish fry' },
+  { name: 'Chettinad Chicken', category: 'non-veg', menu: 'non-veg', description: 'Spicy South Indian chicken curry' },
+  { name: 'Chicken Kheema Masala', category: 'non-veg', menu: 'non-veg', description: 'Minced chicken curry' },
+  { name: 'Hyderabadi Chicken Biryani', category: 'non-veg', menu: 'non-veg', description: 'Aromatic chicken biryani' },
+  { name: 'Hyderabadi Mutton Biryani', category: 'non-veg', menu: 'non-veg', description: 'Aromatic mutton biryani' },
+  
+  // Traditional Sweets
+  { name: 'Laddu', category: 'desserts', menu: 'traditional', description: 'Traditional sweet balls' },
+  { name: 'Badusha', category: 'desserts', menu: 'traditional', description: 'Flaky sweet pastry' },
+  { name: 'Mysorepak', category: 'desserts', menu: 'traditional', description: 'Ghee-rich gram flour sweet' },
 ]
 
 export default function MenuContent() {
@@ -35,7 +115,7 @@ export default function MenuContent() {
       <section className="section-padding">
         <div className="container-custom">
           <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {['all', 'veg', 'non-veg', 'desserts'].map((category) => (
+            {['all', 'veg', 'non-veg', 'desserts', 'breakfast', 'beverages'].map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
@@ -47,7 +127,9 @@ export default function MenuContent() {
               >
                 {category === 'all' ? 'All Items' : 
                  category === 'veg' ? 'Vegetarian' : 
-                 category === 'non-veg' ? 'Non-Vegetarian' : 'Desserts'}
+                 category === 'non-veg' ? 'Non-Vegetarian' : 
+                 category === 'desserts' ? 'Desserts' :
+                 category === 'breakfast' ? 'Breakfast' : 'Beverages'}
               </button>
             ))}
           </div>
@@ -60,14 +142,17 @@ export default function MenuContent() {
                   <span className={`px-3 py-1 rounded-full text-xs font-medium ${
                     item.category === 'veg' ? 'bg-green-100 text-green-800' :
                     item.category === 'non-veg' ? 'bg-red-100 text-red-800' :
-                    'bg-yellow-100 text-yellow-800'
+                    item.category === 'desserts' ? 'bg-yellow-100 text-yellow-800' :
+                    item.category === 'breakfast' ? 'bg-orange-100 text-orange-800' :
+                    'bg-blue-100 text-blue-800'
                   }`}>
                     {item.category === 'veg' ? '🟢 Veg' : 
-                     item.category === 'non-veg' ? '🔴 Non-Veg' : '🟡 Dessert'}
+                     item.category === 'non-veg' ? '🔴 Non-Veg' : 
+                     item.category === 'desserts' ? '🟡 Dessert' :
+                     item.category === 'breakfast' ? '🟠 Breakfast' : '🔵 Beverage'}
                   </span>
                 </div>
                 <p className="text-gray-600 mb-3">{item.description}</p>
-                <p className="text-primary font-semibold text-lg">{item.price}</p>
               </div>
             ))}
           </div>

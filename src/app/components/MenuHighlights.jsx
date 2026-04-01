@@ -4,12 +4,12 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 const menuItems = [
-  { name: 'Paneer Tikka', category: 'veg', description: 'Marinated cottage cheese grilled to perfection', tag: 'Vegetarian' },
-  { name: 'Butter Chicken', category: 'non-veg', description: 'Tender chicken in rich tomato cream sauce', tag: 'Non-Veg' },
-  { name: 'Dal Makhani', category: 'veg', description: 'Creamy black lentils slow-cooked overnight', tag: 'Vegetarian' },
-  { name: 'Gulab Jamun', category: 'desserts', description: 'Soft milk dumplings in rose-flavored syrup', tag: 'Dessert' },
-  { name: 'Biryani', category: 'non-veg', description: 'Aromatic basmati rice with spiced meat', tag: 'Non-Veg' },
-  { name: 'Malai Kofta', category: 'veg', description: 'Cottage cheese dumplings in creamy gravy', tag: 'Vegetarian' },
+  { name: 'Vegetable Biryani', category: 'veg', description: 'Aromatic basmati rice with mixed vegetables', tag: 'Vegetarian' },
+  { name: 'Hyderabadi Chicken Biryani', category: 'non-veg', description: 'Authentic Hyderabadi style chicken biryani', tag: 'Non-Veg' },
+  { name: 'Gongura Rice', category: 'veg', description: 'Tangy sorrel leaves rice - Andhra special', tag: 'Vegetarian' },
+  { name: 'Mango Rasamalai', category: 'desserts', description: 'Mango-flavored cheese dessert', tag: 'Dessert' },
+  { name: 'Paneer Hyderabadi Gravy', category: 'veg', description: 'Rich cottage cheese in Hyderabadi style gravy', tag: 'Vegetarian' },
+  { name: 'Kakinada Kaja', category: 'desserts', description: 'Traditional layered sweet pastry', tag: 'Dessert' },
 ]
 
 export default function MenuHighlights() {
